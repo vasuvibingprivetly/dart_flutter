@@ -27,8 +27,7 @@ void main() {
   }
 
   allData.forEach((element) {
-    print(
-        "\nData of: ---[${allData.indexOf(element) + 1}/ ${allData.length}]---\n");
+    print("\nData of: ---[${allData.indexOf(element) + 1}/ ${allData.length}]---\n");
     element.forEach((key, value) {
       print("$key\t:$value");
     });
