@@ -1,14 +1,23 @@
-import 'dart:core';
+import 'dart:io';
 
-void main() {
-  // print("Enter size: ");
-  // int? n = int.parse(stdin.readLineSync()!);
+void main()
+{
+  stdout.write("Enter List Size : ");
+  int size = int.parse(stdin.readLineSync() ?? "0");
 
-  List<int> myList = [1, 2, -1, 4, -6, -9, 4, 0, -3];
-
-  myList.forEach((element) {
-    if (element < 0) {
-      print("$myList");
-    }
+  List<int> myList = List.generate(size, (index) {
+    stdout.write("Enter Element $index: ");
+    return int.parse(stdin.readLineSync()?? "0");
   });
+
+  stdout.write("\nNegative Elements : ");
+  for(int i=0; i<size; i++)
+  {
+    if(myList[i] < 0)
+     {
+       stdout.write("${myList[i]}\t");
+     }
+  }
+
+  
 }
