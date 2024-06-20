@@ -1,24 +1,26 @@
 import 'dart:io';
 
 void main() {
+  List<List<int>> a = [];
+
   int r, c;
-  print("Enter r:");
+  print("Enter number of rows:");
   r = int.parse(stdin.readLineSync()!);
-  print("Enter c:");
+  print("Enter number of columns:");
   c = int.parse(stdin.readLineSync()!);
 
-  List<List<int>> a = List.generate(r, (i) => List<int>.filled(c, 0));
-
   for (int i = 0; i < r; i++) {
-    for (int v = 0; v < c; v++) {
-      stdout.write("a[$i][$v]: ");
-      a[i][v] = int.parse(stdin.readLineSync()!);
+    List<int> row = [];
+    for (int j = 0; j < c; j++) {
+      stdout.write("Enter element at position [$i][$j]: ");
+      row.add(int.parse(stdin.readLineSync()!));
     }
+    a.add(row);
   }
 
   for (int i = 0; i < r; i++) {
-    for (int v = 0; v < c; v++) {
-      stdout.write("${a[i][v]}");
+    for (int j = 0; j < c; j++) {
+      stdout.write("${a[i][j]} ");
     }
     print("");
   }
@@ -38,19 +40,18 @@ void main() {
   switch (choice) {
     case 1:
       for (int i = 0; i < r; i++) {
-        for (int v = 0; v < c; v++) {
-          sum += a[i][v];
+        for (int j = 0; j < c; j++) {
+          sum += a[i][j];
         }
       }
       print("Sum of all elements: $sum");
       break;
 
     case 2:
-      int p;
       print("Enter row:");
       p = int.parse(stdin.readLineSync()!);
-      for (int v = 0; v < c; v++) {
-        sum += a[p][v];
+      for (int j = 0; j < c; j++) {
+        sum += a[p][j];
       }
       print("Sum of row $p: $sum");
       break;
