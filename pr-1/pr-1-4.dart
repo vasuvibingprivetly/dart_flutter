@@ -1,27 +1,29 @@
 import 'dart:io';
 
-void main() {
-  List<List<int>> a = List.generate(3, (i) => List<int>.filled(3, 0));
-  List<List<int>> b = List.generate(3, (i) => List<int>.filled(3, 0));
-  List<List<int>> sum = List.generate(3, (i) => List<int>.filled(3, 0));
+void main() 
+{
+  stdout.write("Enter Row : ");
+  int r = int.parse(stdin.readLineSync() ?? "0");
+  stdout.write("Enter Column : ");
+  int c = int.parse(stdin.readLineSync() ?? "0");
 
-  for (int i = 0; i < 3; i++) {
-    for (int v = 0; v < 3; v++) {
-      stdout.write("a[$i][$v]: ");
-      a[i][v] = int.parse(stdin.readLineSync()!);
+  List<List<int>> myList = List.generate(r, (index)
+  {
+    List<int> newList = List.generate(c, (i)
+    {
+      stdout.write("Enter Element [${index}][${i}]: ");
+      return int.parse(stdin.readLineSync() ?? "0");
+    });
+    return newList;
+  });
+
+  int sum = 0;
+  for(int i = 0; i < r; i++)
+  {
+    for(int j = 0; j < c; j++)
+    {
+      sum += myList[i][j];
     }
   }
-
-  for (int i = 0; i < 3; i++) {
-    for (int v = 0; v < 3; v++) {
-      stdout.write("b[$i][$v]: ");
-      b[i][v] = int.parse(stdin.readLineSync()!);
-    }
-  }
-
-  for (int i = 0; i < 3; i++) {
-    for (int v = 0; v < 3; v++) {
-      sum[i][v] = a[i][v] + b[i][v];
-    }
-  }
+   stdout.write("Sum = ${sum}");
 }
